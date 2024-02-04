@@ -1,4 +1,4 @@
-#include <iostream>
+#include<iostream>
 #include<vector>
 #include<map>
 #include <stack>
@@ -269,13 +269,14 @@ public:
 			return false;
 		}
 	}
+
 	void ShortestPath(Node* s, Node* d) {
 
 		map<Node*, double> distance;
 		map<Node*, Node*> parent;
 		for (auto i : nodes) {
-			distance[i.first] =INFINITY;
-			parent[i.first] = NULL;
+			distance[i.first] = NULL;
+			parent[i.first] = NILL;
 		}
 		distance[s] = 0;
 		for (int l = 0; l < size; l++) {
@@ -310,7 +311,6 @@ public:
 		cout << endl;
 
 	}
-
 	void topologicalSort() {
 		if (type == directed) {
 			if (Cycle() == true) {
@@ -361,9 +361,6 @@ public:
 	}
 
 };
-
-
-
 int main() {
 	Node a("a");
 	Node b("b");
@@ -385,6 +382,6 @@ int main() {
 	cout << endl;
 	cout << "Cycle exists: " << G.Cycle() << endl;
 	cout << "Shortest path a to d: "; G.ShortestPath(&a, &d); cout << endl;;
-	//G.topologicalSort();
+	G.topologicalSort();
 	return 0;
 }
